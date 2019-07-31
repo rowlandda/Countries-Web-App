@@ -1,0 +1,17 @@
+<app-header (pageEmitter)='changeSelectedPage($event)'></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"
+            *ngIf="selectedPage === 'overview'"
+            id="country-list">
+            <app-country-list (selectedCountry)='changeSelectedCountry($event)'></app-country-list>
+        </div>
+        <div class="col-sm-9">
+            <app-overview (clickedCountry)='changeSelectedCountry($event)' [currentCountry]='selectedCountry' 
+            *ngIf="selectedPage === 'overview'"></app-overview> 
+            <app-top10 *ngIf="selectedPage === 'top10'"></app-top10>
+            <app-about-page *ngIf="selectedPage === 'about'"></app-about-page> 
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>

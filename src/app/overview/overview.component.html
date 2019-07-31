@@ -1,0 +1,30 @@
+<br>
+<hr>
+<div class="row" *ngIf="currentCountry.name === 'unselected'">
+    <div class="col">
+        <app-big-map (clickedCountry)="emitClickedCountry($event)"></app-big-map>
+    </div>
+</div>
+<div class="row" *ngIf="currentCountry.name != 'unselected'">
+    <div class="col-8">
+        <h2 *ngIf="currentCountry.name != 'unselected'">{{currentCountry.name}} <small class="text-muted">({{ currentCountry.alpha3Code}})</small></h2>
+    </div>
+    <div class="col-4">
+        <img class="img-fluid border border-dark" *ngIf="currentCountry.name != 'unselected'" src={{currentCountry.flag}}>
+    </div>
+</div>
+<hr>
+<br>
+<br>
+<div class="row" *ngIf="currentCountry.name != 'unselected'">
+    <div class="col-xl-6">
+       <h4><small class="text-muted">Capital:</small> {{ currentCountry.capital }}</h4> 
+       <h4><small class="text-muted">Population:</small> {{ currentCountry.population.toLocaleString() }}</h4> 
+       <h4><small class="text-muted">Language:</small> {{ currentCountry.languages[0].name }}</h4> 
+       <h4><small class="text-muted">Size:</small> {{ currentCountry.area.toLocaleString() }} Km<sup>2</sup></h4>
+       <h4><small class="text-muted">Currency:</small> {{ currentCountry.currencies[0].name }} ({{ currentCountry.currencies[0].symbol }})</h4>
+    </div>
+    <div class="col-xl-6">
+        <app-map [latitude]='latitude' [longitude]='longitude' [zoom]='zoom'></app-map>
+    </div>
+</div>

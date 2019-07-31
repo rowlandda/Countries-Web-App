@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col">
+        <!-- <nav class="navbar navbar-expand-lg navbar-light"
+            style="background-color: #e3f2fd">
+            <a class="navbar-brand" href="#"><h3>Countries of the World</h3></a>
+            <button class="navbar-toggler" 
+                    type="button" 
+                    data-toggle="collapse" 
+                    data-target="#navbarNavDropdown" 
+                    aria-controls="navbarNavDropdown" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#" (click)="changeToOverview()">Overview<span *ngIf="selectedPage === 'overview'" class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" (click)="changeToAbout()">About the site<span *ngIf="selectedPage === 'about'" class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+            </div>
+          </nav> -->
+          <nav>
+          <a style="color:black" href="#"><h2>Countries of the World</h2></a>
+          <br>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-overview-tab" data-toggle="tab" href="#nav-overview" role="tab" aria-controls="nav-overview" aria-selected="true" (click)="changeToOverview()">Overview</a>
+            <a class="nav-item nav-link" id="nav-top10-tab" data-toggle="tab" href="#nav-top10" role="tab" aria-controls="nav-top10" aria-selected="false" (click)="changeToTop10()">Top Ten</a>
+            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false" (click)="changeToAbout()">About this page</a>
+          </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-overview" role="tabpanel" aria-labelledby="nav-overview-tab"></div>
+            <div class="tab-pane fade" id="nav-top10" role="tabpanel" aria-labelledby="nav-top10-tab"></div>
+            <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab"></div>
+          </div>
+    </div>
+</div>

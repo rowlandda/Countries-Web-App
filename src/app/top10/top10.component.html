@@ -1,0 +1,20 @@
+<br>
+<app-top10-header (pageEmitter)="changeSelectedPage($event)"></app-top10-header>
+<br>
+<hr>
+<div  class="row">
+    <div *ngIf="selectedPage === 'population'" class="col-xl-7">
+        <a href="#" 
+            class="list-group-item list-group-item-action" 
+            *ngFor="let country of topByPopulation">
+                <img class="img-fluid icon border-dark" src={{country.flag}}> {{country.name}}: {{country.population.toLocaleString()}} 
+        </a>
+    </div>
+    <div *ngIf="selectedPage === 'area'" class="col-xl-7">
+        <a href="#" 
+            class="list-group-item list-group-item-action" 
+            *ngFor="let country of topByArea">
+                <img class="img-fluid icon border-dark" src={{country.flag}}> {{country.name}}: {{country.area.toLocaleString()}} km<sup>2</sup>
+        </a>
+    </div>
+</div>

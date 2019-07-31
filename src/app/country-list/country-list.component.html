@@ -1,0 +1,26 @@
+<br>
+<br>
+<br>
+<input type="text" class="form-control form-control-lg" 
+(input)="updateCountryList(searchString)"
+[(ngModel)]="searchString"
+placeholder="Search"/>
+<br>
+<div class="list-group" id="country-list">
+    <div *ngIf="searchString === ''">
+        <a href="#" 
+            class="list-group-item list-group-item-action" 
+            (click) = "changeSelectedCountry(country)"
+            *ngFor="let country of countries">
+                <img class="img-fluid icon border-dark" src={{country.flag}}> {{country.name}}
+        </a>
+    </div>
+    <div *ngIf="searchString != ''">
+        <a href="#" 
+            class="list-group-item list-group-item-action" 
+            (click) = "changeSelectedCountry(country)"
+            *ngFor="let country of modifiedCountryList">
+            <img class="img-fluid icon border-dark" src={{country.flag}}> {{country.name}}
+        </a>
+    </div>
+</div>
