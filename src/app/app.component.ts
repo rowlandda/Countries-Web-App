@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   selectedPage: string;
 
   ngOnInit() {
-    this.selectedCountry = {name: 'unselected'}
+    this.selectedCountry = {name: 'unselected'}//a country object with name='unselected triggers the frontpage load
   }
 
   changeSelectedCountry(country: any) {

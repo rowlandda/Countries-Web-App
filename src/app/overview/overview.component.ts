@@ -30,6 +30,12 @@ export class OverviewComponent implements OnInit, OnChanges{
     this.clickedCountry.emit(event);
   }
 
+  goHome() {
+    const resetCountry = {name: 'unselected'};//if the selected country has a name='unselected' the homescreen is triggered
+    this.clickedCountry.emit(resetCountry);
+    this.currentCountry = resetCountry;
+  }
+
   getZoom(size: number) {//lots of magic numbers here.
     if (size > 10000000) {//eventually need to come up with a function to turn area to zoom level
       return 2;

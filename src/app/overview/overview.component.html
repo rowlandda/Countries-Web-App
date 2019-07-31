@@ -28,3 +28,8 @@
         <app-map [latitude]='latitude' [longitude]='longitude' [zoom]='zoom'></app-map>
     </div>
 </div>
+<div class="row" *ngIf="currentCountry.name != 'unselected'">
+    <div class="col-xl">
+        <button class="btn btn-primary" id="home-btn" (click)="goHome()">Return to Map</button>
+    </div>
+</div>

@@ -21,19 +21,37 @@ export class BigMapComponent implements OnInit {
     let latitude: number = event.coords.lat;
     let longitude: number = event.coords.lng;
     this.geolocationService.getLocationObject(latitude, longitude).subscribe( (locale) => {
-      const countryName: string = locale.results[locale.results.length - 1].formatted_address;//look up google geolocation response to understand this
+      let countryName: string = locale.results[locale.results.length - 1].formatted_address;//look up google geolocation response to understand this
+      countryName = this.sanitizeCountryName(countryName);
+      console.log(countryName);
       this.countriesService.getAll().subscribe( (countries) => {
         this.allCountries = countries;
         this.country = this.allCountries.find( (element) => {
           return element.name === countryName;
-        })
+        });
+        //final round of error handling.  if sanitize didn't work loosen the search criteria
+        if (this.country === undefined) {
+          this.country = this.allCountries.find( (element) => {
+            return element.name.includes(countryName);
+          });
+        }
         this.clickedCountry.emit(this.country);
       });
     });
   }
 
-  getCountryByName(name: string) {
-
+  //some of the geocode countries names aren't the same as the restcountry name
+  //quick fix for now.  best option is to switch to alphacode for everything
+  sanitizeCountryName(name: string): string {
+    if (name === 'United States') {
+      return 'United States of America';
+    }
+    else if (name === 'South Korea') {
+      return 'Korea (Republic of)';
+    }
+    else {
+      return name;
+    }
   }
 
 }
