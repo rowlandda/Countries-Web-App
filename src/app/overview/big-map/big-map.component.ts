@@ -23,7 +23,6 @@ export class BigMapComponent implements OnInit {
     this.geolocationService.getLocationObject(latitude, longitude).subscribe( (locale) => {
       let countryName: string = locale.results[locale.results.length - 1].formatted_address;//look up google geolocation response to understand this
       countryName = this.sanitizeCountryName(countryName);
-      console.log(countryName);
       this.countriesService.getAll().subscribe( (countries) => {
         this.allCountries = countries;
         this.country = this.allCountries.find( (element) => {
