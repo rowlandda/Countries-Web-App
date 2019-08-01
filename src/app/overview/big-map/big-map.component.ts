@@ -11,6 +11,21 @@ export class BigMapComponent implements OnInit {
   country: any;
   allCountries: any;
   @Output() clickedCountry: EventEmitter<any> = new EventEmitter();
+  travisLand: {} = {
+    name: "TravisLand",
+    alpha3Code: "TVL",
+    capital: "Travis Montgomery",
+    population: 1,
+    area: 1,
+    currencies: [{
+      name: "American Dollar",
+      symbol: "$"
+    }],
+    languages: [{
+      name: "English"
+    }],
+    flag: "../../assets/travis.jpg"
+  }
 
   constructor(private geolocationService: GeolocationService, private countriesService: CountryService) { }
 
@@ -33,6 +48,9 @@ export class BigMapComponent implements OnInit {
           this.country = this.allCountries.find( (element) => {
             return element.name.includes(countryName);
           });
+        };
+        if (countryName ==='TravisLand') {
+          this.country = this.travisLand;
         }
         this.clickedCountry.emit(this.country);
       });
@@ -47,6 +65,8 @@ export class BigMapComponent implements OnInit {
     }
     else if (name === 'South Korea') {
       return 'Korea (Republic of)';
+    }else if (name === 'Ireland') {
+      return 'TravisLand';
     }
     else {
       return name;

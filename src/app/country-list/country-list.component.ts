@@ -11,7 +11,7 @@ export class CountryListComponent implements OnInit {
   modifiedCountryList: any;
   searchString: string = '';
   @Output() selectedCountry: EventEmitter<any> = new EventEmitter();
-
+  
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
@@ -28,5 +28,7 @@ export class CountryListComponent implements OnInit {
 
   changeSelectedCountry(country: any) {
     this.selectedCountry.emit(country);
+    this.searchString = country.name;
+    this.updateCountryList(this.searchString);
   }
 }

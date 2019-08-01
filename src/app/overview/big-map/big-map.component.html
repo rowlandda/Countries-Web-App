@@ -1,1 +1,5 @@
-<agm-map [zoom]=1.7 (mapClick)="emitCountry($event)"></agm-map>
+<agm-map [zoom]=1.7 (mapClick)="emitCountry($event)">
+    <agm-info-window [disableAutoPan]="true">
+        Click the map to select a country...
+    </agm-info-window>
+</agm-map>
